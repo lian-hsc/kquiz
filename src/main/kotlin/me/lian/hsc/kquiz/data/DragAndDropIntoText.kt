@@ -13,12 +13,16 @@ import tools.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper
  * where `number` is the index of the dragbox in the [dragboxes] list.
  * The question text can thus not contain any other text wrapped in `[[` and `]]`.
  *
- * The question should contain at most as many drop zones as there are dragboxes.
+ * The question should contain at most as many different drop zones as there are dragboxes.
  * Any further drop zone will be displayed without any formating as a very small drop zone.
  * As those drop zones always stay empty, the question will be shown as "Incomplete answer" at beast.
  * The drop zones which do not have a corresponding dragbox are always marked as incorrect and will deduce points.
  * When editing the question in Moodle, the drop zones which do not have a corresponding dragbox must be removed.
  * If there is an open or finished attempt that contains such a question, the "Question Bank" page on Moodle will break.
+ *
+ * A dragbox that has [Dragbox.infinite] set to false should only be referenced at most once.
+ * If it is referenced more than once, only one dropbox can be filled.
+ * The other one will be marked as incorrect and will deduce points.
  *
  * Each dragbox can only be placed in a dropzone of which the group is equal to the correct dragbox group.
  * A dragbox, which is not referenced in the question text, is shown along with the correct answers but is expected to not be used.
@@ -26,7 +30,7 @@ import tools.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper
  * When using HTML format, a dragbox should only use
  * - `<sub>` and `<sup>` tags;
  * - `<b>`, `<i>`, `<em>` and `<strong>` tags; and
- * - `$$` TeX math mode.
+ * - `$$` TeX math mode (seems broken).
  * A dragbox can use any HTML content, but Moodle will display dragboxes that contain other tags weirdly.
  *
  * The dragbox group should be less than or equal to 8.

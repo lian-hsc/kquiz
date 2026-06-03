@@ -115,7 +115,7 @@ class SimpleText(text: String, files: List<File>, format: Format) : Text(text, f
 class File(
   @JacksonXmlProperty(isAttribute = true) val name: String,
   @JacksonXmlText val content: String,
-  @JacksonXmlProperty(isAttribute = true) val path: String,
+  @JacksonXmlProperty(isAttribute = true) val path: String?,
   @JacksonXmlProperty(isAttribute = true) val encoding: Encoding,
 ) {
 

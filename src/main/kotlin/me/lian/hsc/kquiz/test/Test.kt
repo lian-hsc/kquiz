@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import me.lian.hsc.kquiz.data.*
 import tools.jackson.dataformat.xml.XmlMapper
 import tools.jackson.dataformat.xml.XmlWriteFeature
-import java.text.Format
-import java.text.Normalizer
-import javax.xml.crypto.Data
-import kotlin.random.Random
+import kotlin.io.encoding.Base64
 
 typealias OsFile = java.io.File
 
@@ -26,27 +23,26 @@ fun main() {
     .writeValueAsString(
       Quiz(
         listOf(
-          Numerical(
-            WrappedText("Question 1"),
-            SimpleText("What is 1 + 1?", emptyList(), Text.Format.PlainText),
-            1.0,
+          DragAndDropOntoImage(
+            WrappedText("ddoi"),
+            SimpleText("question [[1]] [[1]]", emptyList(), Text.Format.PlainText),
+            0.0,
             emptyList(),
             null,
+            null,
+            File("background.png", Base64.encode(OsFile("guess-and-proof.png").readBytes()), null, File.Encoding.Base64),
+            listOf(
+              DragAndDropOntoImage.DraggableItem(1, 1, "drag1", null),
+              DragAndDropOntoImage.DraggableItem(2, 2, null, File("drag2.png", Base64.encode(OsFile("drag-1-1.png").readBytes()), null, File.Encoding.Base64)),
+              DragAndDropOntoImage.DraggableItem(3, 9, "drag3", null),
+            ),
             false,
             listOf(
-              Numerical.Answer("2", emptyList(), Text.Format.PlainText, Fraction.Positive.One, null, 0.0),
+              DragAndDropOntoImage.Dropzone(1, "drop1", 1, -10.0, -10.0),
+              DragAndDropOntoImage.Dropzone(2, "drop2", 2, 1600.0, 700.0),
             ),
-            Units(
-              Units.UnitHandling.RequiredResponsePenalty,
-              0.5,
-              Units.UnitDisplayMode.TextInput,
-              Units.UnitLocation.Right,
-              listOf(
-                Units.UnitEntry("m", 10.0),
-                Units.UnitEntry("cm", 1.0),
-              )
-            ),
-            MultipleTries(MultipleTries.Penalty.None, emptyList())
+            CombinedFeedback(null, null, false, null),
+            MultipleTries(null, emptyList())
           )
         )
       )
