@@ -9,10 +9,13 @@ version = "1.0-SNAPSHOT"
 
 repositories {
   mavenCentral()
+  mavenLocal()
 }
 
 dependencies {
   implementation("tools.jackson.dataformat:jackson-dataformat-xml:3.1.3")
+  implementation("me.lian-hsc.ktypst:backend-command:1.0-SNAPSHOT")
+  implementation("me.lian-hsc.ktypst:structures:1.0-SNAPSHOT")
 }
 
 kotlin {

@@ -62,8 +62,8 @@ class DragAndDropOntoImage(
     @JsonProperty("no") val number: Int,
     val text: String?,
     @JsonProperty("choice") val correctDraggableItem: Int,
-    val left: Double,
-    val top: Double,
+    @JsonProperty("xleft") val left: Int,
+    @JsonProperty("ytop") val top: Int,
   )
 
 }
