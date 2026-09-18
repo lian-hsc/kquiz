@@ -20,7 +20,7 @@ sealed interface QuizEntry
  * A question in a quiz.
  * @property name the name of the question
  * @property question the question text
- * @property defaultGrade the default grade for the question that is used when added to a quiz
+ * @property defaultGrade the default grade for the question that is used when added to a quiz.
  * @property tags the tags for the question
  * @property generalFeedback the general feedback for the question, regardless of whether it is answered correctly or not
  * @property hidden whether the question is hidden
@@ -28,7 +28,7 @@ sealed interface QuizEntry
 sealed class Question(
   val name: WrappedText<String>,
   @JsonProperty("questiontext") val question: SimpleText,
-  @JsonProperty("defaultgrade") val defaultGrade: Double,
+  @JsonProperty("defaultgrade") val defaultGrade: Double?,
   @JacksonXmlElementWrapper(localName = "tags") @JsonProperty("tag") val tags: List<WrappedText<String>>,
   @JsonProperty("generalfeedback") val generalFeedback: SimpleText?,
   @JsonSerialize(using = NumericBooleanSerializer::class) val hidden: Boolean?,
