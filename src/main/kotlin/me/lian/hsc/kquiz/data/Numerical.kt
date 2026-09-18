@@ -38,7 +38,7 @@ class Numerical(
   hidden: Boolean?,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("answer") val answers: List<Answer>,
   @JsonUnwrapped val units: Units,
-  val multipleTries: MultipleTries,
+  @JsonUnwrapped val multipleTries: MultipleTries,
 ) : Question(name, question, defaultGrade, tags, generalFeedback, hidden) {
 
   /**

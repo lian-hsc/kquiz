@@ -2,6 +2,7 @@ package me.lian.hsc.kquiz.data
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonTypeName
+import com.fasterxml.jackson.annotation.JsonUnwrapped
 import com.fasterxml.jackson.annotation.JsonValue
 import me.lian.hsc.kquiz.serialization.PresenceBooleanSerializer
 import tools.jackson.databind.annotation.JsonSerialize
@@ -61,8 +62,8 @@ class DragAndDropMarkers(
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("drag") val markers: List<Marker>,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("drop") val dropzones: List<Dropzone<*>>,
   @JsonSerialize(using = PresenceBooleanSerializer::class) @JsonProperty("shuffleanswers") val shuffle: Boolean,
-  val combinedFeedback: CombinedFeedback,
-  val multipleTries: MultipleTries
+  @JsonUnwrapped val combinedFeedback: CombinedFeedback,
+  @JsonUnwrapped val multipleTries: MultipleTries
 ) : Question(name, question, defaultGrade, tags, generalFeedback, hidden) {
 
   /**

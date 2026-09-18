@@ -46,7 +46,7 @@ class MultipleChoice(
   hidden: Boolean?,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("answer") val answers: List<Answer>,
   val single: Boolean,
-  @JsonProperty("shuffleansers") @JsonSerialize(using = NumericBooleanSerializer::class) val shuffle: Boolean,
+  @JsonProperty("shuffleanswers") @JsonSerialize(using = NumericBooleanSerializer::class) val shuffle: Boolean,
   @JsonProperty("showstandardinstructions") @JsonSerialize(using = NumericBooleanSerializer::class) val showStandardInstructions: Boolean,
   @JsonProperty("answernumbering") val numbering: Numbering,
   @JsonUnwrapped val combinedFeedback: CombinedFeedback,

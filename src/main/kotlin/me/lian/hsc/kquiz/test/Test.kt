@@ -1,6 +1,7 @@
 package me.lian.hsc.kquiz.test
 
 import com.fasterxml.jackson.annotation.JsonInclude
+import lian.hsc.ktypst.stdlib.cetz.CetzLine
 import me.lian.hsc.kquiz.data.*
 import tools.jackson.dataformat.xml.XmlMapper
 import tools.jackson.dataformat.xml.XmlWriteFeature
@@ -23,26 +24,28 @@ fun main() {
     .writeValueAsString(
       Quiz(
         listOf(
-          DragAndDropOntoImage(
-            WrappedText("ddoi"),
-            SimpleText("question [[1]] [[1]]", emptyList(), Text.Format.PlainText),
-            0.0,
+          MultipleChoice(
+            WrappedText("Capitals"),
+            SimpleText(
+              "What is the capital of France?",
+              emptyList(),
+              Text.Format.MoodleAutoFormat
+            ),
+            1.0,
             emptyList(),
             null,
-            null,
-            File("background.png", Base64.encode(OsFile("guess-and-proof.png").readBytes()), null, File.Encoding.Base64),
-            listOf(
-              DragAndDropOntoImage.DraggableItem(1, 1, "drag1", null),
-              DragAndDropOntoImage.DraggableItem(2, 2, null, File("drag2.png", Base64.encode(OsFile("drag-1-1.png").readBytes()), null, File.Encoding.Base64)),
-              DragAndDropOntoImage.DraggableItem(3, 9, "drag3", null),
-            ),
             false,
             listOf(
-              DragAndDropOntoImage.Dropzone(1, "drop1", 1, -10.0, -10.0),
-              DragAndDropOntoImage.Dropzone(2, "drop2", 2, 1600.0, 700.0),
+              MultipleChoice.Answer("Paris", emptyList(), Text.Format.MoodleAutoFormat, Fraction.Positive.One, null),
+              MultipleChoice.Answer("Berlin", emptyList(), Text.Format.MoodleAutoFormat, Fraction.Zero, null),
+              MultipleChoice.Answer("London", emptyList(), Text.Format.MoodleAutoFormat, Fraction.Zero, null),
             ),
-            CombinedFeedback(null, null, false, null),
-            MultipleTries(null, emptyList())
+            single = true,
+            shuffle = true,
+            showStandardInstructions = false,
+            numbering = MultipleChoice.Numbering.None,
+            combinedFeedback = CombinedFeedback(null, null, false, null),
+            multipleTries = MultipleTries(null, emptyList())
           )
         )
       )

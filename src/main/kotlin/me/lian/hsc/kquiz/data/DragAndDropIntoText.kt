@@ -2,6 +2,7 @@ package me.lian.hsc.kquiz.data
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonTypeName
+import com.fasterxml.jackson.annotation.JsonUnwrapped
 import me.lian.hsc.kquiz.serialization.NumericBooleanSerializer
 import me.lian.hsc.kquiz.serialization.PresenceBooleanSerializer
 import tools.jackson.databind.annotation.JsonSerialize
@@ -57,8 +58,8 @@ class DragAndDropIntoText(
   hidden: Boolean?,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("dragbox") val dragboxes: List<Dragbox>,
   @JsonSerialize(using = NumericBooleanSerializer::class) @JsonProperty("shuffleanswers") val shuffle: Boolean,
-  val combinedFeedback: CombinedFeedback,
-  val multipleTries: MultipleTries,
+  @JsonUnwrapped val combinedFeedback: CombinedFeedback,
+  @JsonUnwrapped val multipleTries: MultipleTries,
 ) : Question(name, question, defaultGrade, tags, generalFeedback, hidden) {
 
   /**

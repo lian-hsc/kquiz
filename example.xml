@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>All question types</text>
+    </category>
+    <info format="moodle_auto_format">
+      <text><![CDATA[]]></text>
+    </info>
+  </question>
+  <question type="multichoice">
+    <answer format="html" fraction="100.0">
+      <text><![CDATA[Paris]]></text>
+    </answer>
+    <answer format="html" fraction="0.0">
+      <text><![CDATA[Berlin]]></text>
+    </answer>
+    <answer format="html" fraction="0.0">
+      <text><![CDATA[Madrid]]></text>
+    </answer>
+    <shuffleanswers>1</shuffleanswers>
+    <showstandardinstructions>1</showstandardinstructions>
+    <answernumbering>abc</answernumbering>
+    <defaultgrade>1.0</defaultgrade>
+    <name>
+      <text>Capitals</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[What is the capital of France?]]></text>
+    </questiontext>
+    <single>true</single>
+  </question>
+</quiz>

@@ -18,7 +18,12 @@ import tools.jackson.dataformat.xml.annotation.JacksonXmlText
  * @see Format
  */
 sealed class Text(
-  @JacksonXmlCData val text: String,
+  // Moodle's XML importer for some element types (e.g. category info) reads `<text>` via unsafe direct
+  // array access rather than a null-safe helper; if it's missing (as it would be if this were left to the
+  // mapper's default NON_EMPTY inclusion, dropping it whenever text is ""), that access throws a PHP
+  // TypeError instead of defaulting. Always emitting the element, even empty, matches real Moodle exports
+  // and avoids that crash.
+  @JsonInclude(JsonInclude.Include.ALWAYS) @JacksonXmlCData val text: String,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("file") val files: List<File>,
   @JacksonXmlProperty(isAttribute = true) val format: Format
 ) {
