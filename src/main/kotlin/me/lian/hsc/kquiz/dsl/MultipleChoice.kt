@@ -1,5 +1,6 @@
 package me.lian.hsc.kquiz.dsl
 
+import me.lian.hsc.kquiz.data.File
 import me.lian.hsc.kquiz.data.Fraction
 import me.lian.hsc.kquiz.data.MultipleChoice
 import me.lian.hsc.kquiz.data.Text
@@ -27,6 +28,14 @@ class MultipleChoiceDsl : QuestionDsl<MultipleChoice>() {
 
   fun option(text: String, block: MultipleChoiceOptionDsl.() -> Unit = {}) {
     answers += MultipleChoiceOptionDsl(text).apply(block).build()
+  }
+
+  /**
+   * Adds an option whose text is built with [content], e.g. to show an [HtmlBuilder.image] as the option.
+   */
+  fun option(content: HtmlBuilder.() -> Unit, block: MultipleChoiceOptionDsl.() -> Unit = {}) {
+    val html = HtmlBuilder().apply(content)
+    answers += MultipleChoiceOptionDsl(html.build(), html.files.toList()).apply(block).build()
   }
 
   fun combinedFeedback(block: CombinedFeedbackDsl.() -> Unit) {
@@ -63,9 +72,10 @@ class MultipleChoiceDsl : QuestionDsl<MultipleChoice>() {
 /**
  * DSL for a single option of a [MultipleChoice] question.
  * @property text the option's text
+ * @property files the files referenced by [text], e.g. images
  */
 @KQuizMarker
-class MultipleChoiceOptionDsl(private val text: String) {
+class MultipleChoiceOptionDsl(private val text: String, private val files: List<File> = emptyList()) {
 
   var fraction: Fraction = Fraction.Zero
 
@@ -77,7 +87,7 @@ class MultipleChoiceOptionDsl(private val text: String) {
 
   internal fun build() = MultipleChoice.Answer(
     text,
-    emptyList(),
+    files,
     Text.Format.HTML,
     fraction,
     feedbackBlock?.let { HtmlBuilder().apply(it).toSimpleText() },
