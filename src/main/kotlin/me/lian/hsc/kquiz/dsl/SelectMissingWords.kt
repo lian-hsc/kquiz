@@ -40,8 +40,14 @@ class SelectMissingWordsDsl : QuestionDsl<SelectMissingWords>() {
     multipleTries.apply(block)
   }
 
+  // A gap whose answer was already used by an earlier gap reuses that option, so the same answer
+  // (e.g. a state appearing in several cells of a transition table) is offered only once per group.
   internal fun registerGap(text: String, group: Int): Int {
-    gaps += SelectMissingWords.SelectOption(text, group)
+    val option = SelectMissingWords.SelectOption(text, group)
+    val existing = gaps.indexOf(option)
+    if (existing >= 0) return existing + 1
+
+    gaps += option
     return gaps.size
   }
 
@@ -72,7 +78,8 @@ class SelectMissingWordsDsl : QuestionDsl<SelectMissingWords>() {
 class GapSelectTextBuilder(private val dsl: SelectMissingWordsDsl) : HtmlBuilder() {
 
   /**
-   * Inserts a gap at this point in the text, whose correct answer is [text].
+   * Inserts a gap at this point in the text, whose correct answer is [text]. Gaps with the same answer in the
+   * same [group] share one option.
    */
   fun gap(text: String, group: Int = 1) {
     raw("[[${dsl.registerGap(text, group)}]]")
