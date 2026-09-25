@@ -29,6 +29,15 @@ class MatchingDsl : QuestionDsl<Matching>() {
   }
 
   /**
+   * Adds a sub-question built with [question], e.g. to format it or show an [HtmlBuilder.image], and its
+   * correct match.
+   */
+  fun pair(question: HtmlBuilder.() -> Unit, answer: String) {
+    val html = HtmlBuilder().apply(question)
+    answers += Matching.Answer(html.build(), html.files.toList(), Text.Format.HTML, WrappedText(answer))
+  }
+
+  /**
    * Adds a match that is never the correct answer for any [pair], i.e. a distractor.
    */
   fun distractor(answer: String) {
