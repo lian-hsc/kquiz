@@ -1,6 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+  `maven-publish`
   kotlin("jvm") version "2.3.10"
 }
 
@@ -25,5 +26,22 @@ kotlin {
 tasks {
   compileKotlin {
     compilerOptions.freeCompilerArgs.add("-Xannotation-default-target=param-property")
+  }
+}
+
+publishing {
+  repositories {
+    mavenLocal()
+  }
+
+  publications {
+    create<MavenPublication>("maven") {
+      from(components["java"])
+
+      artifactId = project.path
+        .removePrefix(":")
+        .replace(":", "-")
+        .ifBlank { rootProject.name }
+    }
   }
 }
