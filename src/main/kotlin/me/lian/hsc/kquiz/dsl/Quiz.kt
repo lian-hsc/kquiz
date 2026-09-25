@@ -45,6 +45,10 @@ sealed class QuizEntriesDsl(protected val entries: MutableList<QuizEntry>) {
     entries += ShortAnswerDsl().apply(block).build()
   }
 
+  fun essay(block: EssayDsl.() -> Unit) {
+    entries += EssayDsl().apply(block).build()
+  }
+
   fun numerical(block: NumericalDsl.() -> Unit) {
     entries += NumericalDsl().apply(block).build()
   }
