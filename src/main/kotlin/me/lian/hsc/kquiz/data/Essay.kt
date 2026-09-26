@@ -16,6 +16,8 @@ import tools.jackson.databind.annotation.JsonSerialize
  * @property maxWordLimit the maximum number of words the response may have, if any
  * @property attachments how many files the student may upload (-1 for unlimited)
  * @property attachmentsRequired how many files the student must upload
+ * @property maxBytes the maximum size of each uploaded file in bytes, if limited (0 uses the course's limit)
+ * @property fileTypes the accepted file types, e.g. `.pdf,.png` or `image`, if limited
  * @property graderInfo information for graders, e.g. a model answer, shown to them but not to students
  * @property responseTemplate text the response input is pre-filled with
  * @see ResponseFormat
@@ -37,6 +39,8 @@ class Essay(
   @JsonProperty("maxwordlimit") val maxWordLimit: Int?,
   @JsonProperty("attachments") val attachments: Int,
   @JsonProperty("attachmentsrequired") val attachmentsRequired: Int,
+  @JsonProperty("maxbytes") val maxBytes: Long?,
+  @JsonProperty("filetypeslist") val fileTypes: String?,
   @JsonProperty("graderinfo") val graderInfo: SimpleText?,
   @JsonProperty("responsetemplate") val responseTemplate: SimpleText?,
 ) : Question(name, question, defaultGrade, tags, generalFeedback, hidden, idNumber) {

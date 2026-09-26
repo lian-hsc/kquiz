@@ -17,6 +17,12 @@ class EssayDsl : QuestionDsl<Essay>() {
   var attachments: Int = 0
   var attachmentsRequired: Int = 0
 
+  /** The maximum size of each uploaded file in bytes, if limited (0 uses the course's limit). */
+  var maxBytes: Long? = null
+
+  /** The accepted file types, e.g. `.pdf,.png` or `image`, if limited. */
+  var fileTypes: String? = null
+
   private var questionBlock: (HtmlBuilder.() -> Unit) by Required("question")
   private var graderInfoBlock: (HtmlBuilder.() -> Unit)? = null
   private var responseTemplateBlock: (HtmlBuilder.() -> Unit)? = null
@@ -59,6 +65,8 @@ class EssayDsl : QuestionDsl<Essay>() {
       maxWordLimit,
       attachments,
       attachmentsRequired,
+      maxBytes,
+      fileTypes,
       graderInfoBlock?.let { HtmlBuilder().apply(it).toSimpleText() },
       responseTemplateBlock?.let { HtmlBuilder().apply(it).toSimpleText() },
     )
