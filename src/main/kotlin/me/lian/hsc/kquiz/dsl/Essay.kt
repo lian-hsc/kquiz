@@ -51,6 +51,7 @@ class EssayDsl : QuestionDsl<Essay>() {
       buildTags(),
       buildGeneralFeedback(),
       hidden,
+      idNumber,
       responseFormat,
       responseRequired,
       responseFieldLines,

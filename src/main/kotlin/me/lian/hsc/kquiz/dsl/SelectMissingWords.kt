@@ -62,6 +62,7 @@ class SelectMissingWordsDsl : QuestionDsl<SelectMissingWords>() {
       buildTags(),
       buildGeneralFeedback(),
       hidden,
+      idNumber,
       options,
       shuffle,
       combinedFeedback.build(),

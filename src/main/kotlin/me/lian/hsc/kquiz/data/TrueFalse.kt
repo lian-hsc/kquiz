@@ -14,9 +14,10 @@ class TrueFalse private constructor(
   tags: List<WrappedText<String>>,
   generalFeedback: SimpleText?,
   hidden: Boolean?,
+  idNumber: String?,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("answer") val answers: List<MultipleChoice.Answer>,
   @JsonProperty("showstandardinstructions") @JsonSerialize(using = NumericBooleanSerializer::class) val showStandardInstructions: Boolean,
-  ) : Question(name, question, defaultGrade, tags, generalFeedback, hidden) {
+  ) : Question(name, question, defaultGrade, tags, generalFeedback, hidden, idNumber) {
 
 
   constructor(
@@ -26,6 +27,7 @@ class TrueFalse private constructor(
     tags: List<WrappedText<String>>,
     generalFeedback: SimpleText?,
     hidden: Boolean?,
+    idNumber: String?,
     trueFeedback: SimpleText?,
     falseFeedback: SimpleText?,
     defaultGrade: Double,
@@ -37,6 +39,7 @@ class TrueFalse private constructor(
     tags,
     generalFeedback,
     hidden,
+    idNumber,
     listOf(
       MultipleChoice.Answer(
         "true",

@@ -29,6 +29,7 @@ class Essay(
   tags: List<WrappedText<String>>,
   generalFeedback: SimpleText?,
   hidden: Boolean?,
+  idNumber: String?,
   @JsonProperty("responseformat") val responseFormat: ResponseFormat,
   @JsonProperty("responserequired") @JsonSerialize(using = NumericBooleanSerializer::class) val responseRequired: Boolean,
   @JsonProperty("responsefieldlines") val responseFieldLines: Int,
@@ -38,7 +39,7 @@ class Essay(
   @JsonProperty("attachmentsrequired") val attachmentsRequired: Int,
   @JsonProperty("graderinfo") val graderInfo: SimpleText?,
   @JsonProperty("responsetemplate") val responseTemplate: SimpleText?,
-) : Question(name, question, defaultGrade, tags, generalFeedback, hidden) {
+) : Question(name, question, defaultGrade, tags, generalFeedback, hidden, idNumber) {
 
   /**
    * How the student enters the response.

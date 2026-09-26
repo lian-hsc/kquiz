@@ -62,6 +62,7 @@ class MatchingDsl : QuestionDsl<Matching>() {
       buildTags(),
       buildGeneralFeedback(),
       hidden,
+      idNumber,
       answers.toList(),
       combinedFeedback.build(),
       multipleTries.build(),

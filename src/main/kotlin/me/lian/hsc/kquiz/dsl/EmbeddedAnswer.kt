@@ -27,6 +27,7 @@ class EmbeddedAnswerDsl : QuestionDsl<EmbeddedAnswer>() {
       buildTags(),
       buildGeneralFeedback(),
       hidden,
+      idNumber,
       multipleTries.build(),
     )
   }

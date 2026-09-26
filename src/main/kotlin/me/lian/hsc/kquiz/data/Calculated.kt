@@ -49,12 +49,13 @@ class Calculated(
   tags: List<WrappedText<String>>,
   generalFeedback: SimpleText?,
   hidden: Boolean?,
+  idNumber: String?,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("answer") val answers: List<Answer>,
   @JsonProperty("synchronize") val synchronizeWildcards: SynchronizeWildcards,
   @JsonUnwrapped val units: Units,
   @JsonUnwrapped val multipleTries: MultipleTries,
   @JacksonXmlElementWrapper(localName = "dataset_definitions") @JsonProperty("dataset_definition") val datasets: List<Dataset>
-) : Question(name, question, defaultGrade, tags, generalFeedback, hidden) {
+) : Question(name, question, defaultGrade, tags, generalFeedback, hidden, idNumber) {
 
   /**
    * Whether the question wildcards are synchronized with other questions or not.
@@ -241,13 +242,14 @@ class CalculatedMultipleChoice(
   tags: List<WrappedText<String>>,
   generalFeedback: SimpleText?,
   hidden: Boolean?,
+  idNumber: String?,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("answer") val answers: List<Answer>,
   @JsonSerialize(using = NumericBooleanSerializer::class) val single: Boolean,
   @JsonProperty("synchronize") val synchronizeWildcards: Calculated.SynchronizeWildcards,
   @JsonUnwrapped val combinedFeedback: CombinedFeedback,
   @JsonUnwrapped val multipleTries: MultipleTries,
   @JacksonXmlElementWrapper(localName = "dataset_definitions") @JsonProperty("dataset_definition") val datasets: List<Calculated.Dataset>
-): Question(name, question, defaultGrade, tags, generalFeedback, hidden) {
+): Question(name, question, defaultGrade, tags, generalFeedback, hidden, idNumber) {
 
 
   /**

@@ -92,6 +92,7 @@ class DragAndDropMarkersDsl : QuestionDsl<DragAndDropMarkers>() {
       buildTags(),
       buildGeneralFeedback(),
       hidden,
+      idNumber,
       background,
       markers.toList(),
       dropzones.toList(),

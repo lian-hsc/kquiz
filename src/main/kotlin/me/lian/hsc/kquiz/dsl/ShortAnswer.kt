@@ -39,6 +39,7 @@ class ShortAnswerDsl : QuestionDsl<ShortAnswer>() {
       buildTags(),
       buildGeneralFeedback(),
       hidden,
+      idNumber,
       answers.toList(),
       caseSensitive,
       multipleTries.build(),

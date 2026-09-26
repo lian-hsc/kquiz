@@ -44,6 +44,7 @@ class MultipleChoice(
   tags: List<WrappedText<String>>,
   generalFeedback: SimpleText?,
   hidden: Boolean?,
+  idNumber: String?,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("answer") val answers: List<Answer>,
   val single: Boolean,
   @JsonProperty("shuffleanswers") @JsonSerialize(using = NumericBooleanSerializer::class) val shuffle: Boolean,
@@ -51,7 +52,7 @@ class MultipleChoice(
   @JsonProperty("answernumbering") val numbering: Numbering,
   @JsonUnwrapped val combinedFeedback: CombinedFeedback,
   @JsonUnwrapped val multipleTries: MultipleTries,
-) : Question(name, question, defaultGrade, tags, generalFeedback, hidden) {
+) : Question(name, question, defaultGrade, tags, generalFeedback, hidden, idNumber) {
 
   /**
    * How the answers are numbered.

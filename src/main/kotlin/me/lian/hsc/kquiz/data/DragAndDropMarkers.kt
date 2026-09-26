@@ -58,13 +58,14 @@ class DragAndDropMarkers(
   tags: List<WrappedText<String>>,
   generalFeedback: SimpleText?,
   hidden: Boolean?,
+  idNumber: String?,
   @JsonProperty("file") val background: File,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("drag") val markers: List<Marker>,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("drop") val dropzones: List<Dropzone<*>>,
   @JsonSerialize(using = PresenceBooleanSerializer::class) @JsonProperty("shuffleanswers") val shuffle: Boolean,
   @JsonUnwrapped val combinedFeedback: CombinedFeedback,
   @JsonUnwrapped val multipleTries: MultipleTries
-) : Question(name, question, defaultGrade, tags, generalFeedback, hidden) {
+) : Question(name, question, defaultGrade, tags, generalFeedback, hidden, idNumber) {
 
   /**
    * A marker that can be dragged and dropped onto a dropzone.

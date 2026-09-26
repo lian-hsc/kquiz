@@ -43,6 +43,7 @@ class NumericalDsl : QuestionDsl<Numerical>() {
       buildTags(),
       buildGeneralFeedback(),
       hidden,
+      idNumber,
       answers.toList(),
       units.build(),
       multipleTries.build(),

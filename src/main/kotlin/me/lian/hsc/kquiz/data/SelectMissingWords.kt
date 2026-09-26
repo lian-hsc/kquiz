@@ -38,11 +38,12 @@ class SelectMissingWords(
   tags: List<WrappedText<String>>,
   generalFeedback: SimpleText?,
   hidden: Boolean?,
+  idNumber: String?,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("selectoption") val options: List<SelectOption>,
   @JsonSerialize(using = NumericBooleanSerializer::class) @JsonProperty("shuffleanswers") val shuffle: Boolean,
   @JsonUnwrapped val combinedFeedback: CombinedFeedback,
   @JsonUnwrapped val multipleTries: MultipleTries,
-) : Question(name, question, defaultGrade, tags, generalFeedback, hidden) {
+) : Question(name, question, defaultGrade, tags, generalFeedback, hidden, idNumber) {
 
   /**
    * An option that can be selected from the dropdown menu of a gap (a `[[number]]` in the question text).

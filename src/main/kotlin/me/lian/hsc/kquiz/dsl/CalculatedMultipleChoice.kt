@@ -55,6 +55,7 @@ class CalculatedMultipleChoiceDsl : QuestionDsl<CalculatedMultipleChoice>() {
       buildTags(),
       buildGeneralFeedback(),
       hidden,
+      idNumber,
       answers.toList(),
       single,
       synchronizeWildcards,

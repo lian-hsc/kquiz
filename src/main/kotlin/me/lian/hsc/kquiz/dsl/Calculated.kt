@@ -52,6 +52,7 @@ class CalculatedDsl : QuestionDsl<Calculated>() {
       buildTags(),
       buildGeneralFeedback(),
       hidden,
+      idNumber,
       answers.toList(),
       synchronizeWildcards,
       units.build(),

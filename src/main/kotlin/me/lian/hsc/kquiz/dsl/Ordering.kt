@@ -55,6 +55,7 @@ class OrderingDsl : QuestionDsl<Ordering>() {
       buildTags(),
       buildGeneralFeedback(),
       hidden,
+      idNumber,
       layout,
       selection,
       selectionCount,

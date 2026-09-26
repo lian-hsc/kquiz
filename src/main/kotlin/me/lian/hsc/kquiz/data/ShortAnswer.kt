@@ -27,10 +27,11 @@ class ShortAnswer(
   tags: List<WrappedText<String>>,
   generalFeedback: SimpleText?,
   hidden: Boolean?,
+  idNumber: String?,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("answer") val answers: List<Answer>,
   @JsonProperty("usecase") @JsonSerialize(using = NumericBooleanSerializer::class) val caseSensitive: Boolean,
   @JsonUnwrapped val multipleTries: MultipleTries,
-) : Question(name, question, defaultGrade, tags, generalFeedback, hidden) {
+) : Question(name, question, defaultGrade, tags, generalFeedback, hidden, idNumber) {
 
   /**
    * An answer to a short-answer question.

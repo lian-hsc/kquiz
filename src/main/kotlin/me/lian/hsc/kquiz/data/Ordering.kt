@@ -46,6 +46,7 @@ class Ordering(
   tags: List<WrappedText<String>>,
   generalFeedback: SimpleText?,
   hidden: Boolean?,
+  idNumber: String?,
   @JsonProperty("layouttype") val layout: Layout,
   @JsonProperty("selecttype") val selection: Selection,
   @JsonProperty("selectcount") val selectionCount: Int?,
@@ -55,7 +56,7 @@ class Ordering(
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("answer") val answers: List<Answer>,
   @JsonUnwrapped val combinedFeedback: CombinedFeedback,
   @JsonUnwrapped val multipleTries: MultipleTries,
-) : Question(name, question, defaultGrade, tags, generalFeedback, hidden) {
+) : Question(name, question, defaultGrade, tags, generalFeedback, hidden, idNumber) {
 
   /**
    * Whether the items are laid out vertically or horizontally.

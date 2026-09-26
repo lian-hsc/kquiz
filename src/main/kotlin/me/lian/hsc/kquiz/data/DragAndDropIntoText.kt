@@ -56,11 +56,12 @@ class DragAndDropIntoText(
   tags: List<WrappedText<String>>,
   generalFeedback: SimpleText?,
   hidden: Boolean?,
+  idNumber: String?,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("dragbox") val dragboxes: List<Dragbox>,
   @JsonSerialize(using = NumericBooleanSerializer::class) @JsonProperty("shuffleanswers") val shuffle: Boolean,
   @JsonUnwrapped val combinedFeedback: CombinedFeedback,
   @JsonUnwrapped val multipleTries: MultipleTries,
-) : Question(name, question, defaultGrade, tags, generalFeedback, hidden) {
+) : Question(name, question, defaultGrade, tags, generalFeedback, hidden, idNumber) {
 
   /**
    * A dragbox that can be dragged onto the texted and dropped into a dropzone (a `[[number]]` in the question text).

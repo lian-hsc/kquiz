@@ -24,6 +24,7 @@ sealed interface QuizEntry
  * @property tags the tags for the question
  * @property generalFeedback the general feedback for the question, regardless of whether it is answered correctly or not
  * @property hidden whether the question is hidden
+ * @property idNumber the question's ID number, an identifier of your choice unique within its category
  */
 sealed class Question(
   val name: WrappedText<String>,
@@ -32,4 +33,5 @@ sealed class Question(
   @JacksonXmlElementWrapper(localName = "tags") @JsonProperty("tag") val tags: List<WrappedText<String>>,
   @JsonProperty("generalfeedback") val generalFeedback: SimpleText?,
   @JsonSerialize(using = NumericBooleanSerializer::class) val hidden: Boolean?,
+  @JsonProperty("idnumber") val idNumber: String?,
 ) : QuizEntry

@@ -55,6 +55,7 @@ class DragAndDropIntoTextDsl : QuestionDsl<DragAndDropIntoText>() {
       buildTags(),
       buildGeneralFeedback(),
       hidden,
+      idNumber,
       dragboxes,
       shuffle,
       combinedFeedback.build(),

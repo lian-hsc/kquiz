@@ -57,6 +57,7 @@ class MultipleChoiceDsl : QuestionDsl<MultipleChoice>() {
       buildTags(),
       buildGeneralFeedback(),
       hidden,
+      idNumber,
       answers.toList(),
       single,
       shuffle,

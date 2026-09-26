@@ -37,6 +37,7 @@ class TrueFalseDsl : QuestionDsl<TrueFalse>() {
       buildTags(),
       buildGeneralFeedback(),
       hidden,
+      idNumber,
       trueFeedbackBlock?.let { HtmlBuilder().apply(it).toSimpleText() },
       falseFeedbackBlock?.let { HtmlBuilder().apply(it).toSimpleText() },
       defaultGrade,

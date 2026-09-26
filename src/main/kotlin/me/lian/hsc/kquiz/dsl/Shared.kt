@@ -15,6 +15,9 @@ sealed class QuestionDsl<Q : Question> {
   var name: String by Required()
   var hidden: Boolean? = null
 
+  /** The question's ID number, an identifier of your choice unique within its category. */
+  var idNumber: String? = null
+
   private val tagList = mutableListOf<String>()
   private var generalFeedbackBlock: (HtmlBuilder.() -> Unit)? = null
 

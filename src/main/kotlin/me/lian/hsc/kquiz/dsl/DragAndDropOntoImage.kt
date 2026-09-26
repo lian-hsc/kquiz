@@ -64,6 +64,7 @@ class DragAndDropOntoImageDsl : QuestionDsl<DragAndDropOntoImage>() {
       buildTags(),
       buildGeneralFeedback(),
       hidden,
+      idNumber,
       background,
       items.toList(),
       transparentDropzones,

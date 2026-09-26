@@ -26,5 +26,6 @@ class EmbeddedAnswer(
   tags: List<WrappedText<String>>,
   generalFeedback: SimpleText?,
   hidden: Boolean?,
+  idNumber: String?,
   @JsonUnwrapped val multipleTries: MultipleTries,
-) : Question(name, question, null, tags, generalFeedback, hidden)
+) : Question(name, question, null, tags, generalFeedback, hidden, idNumber)
