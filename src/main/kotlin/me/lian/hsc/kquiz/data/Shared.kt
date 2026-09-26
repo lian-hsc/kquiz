@@ -171,12 +171,12 @@ data class MultipleTries(
    * The penalty for each wrong try.
    */
   enum class Penalty(@get:JsonValue val value: Double) {
-    Full(100.0),
-    Half(50.0),
-    Third(33.33333),
-    Quarter(25.0),
-    Fifth(20.0),
-    Tenth(10.0),
+    Full(1.0),
+    Half(0.5),
+    Third(0.3333333),
+    Quarter(0.25),
+    Fifth(0.2),
+    Tenth(0.1),
     None(0.0),
   }
 
@@ -349,6 +349,8 @@ sealed interface Fraction {
     OneFifth(20.0),
     OneSixth(16.66667),
     OneSeventh(14.28571),
+    OneEighth(12.5),
+    OneNinth(11.11111),
     OneTenth(10.0),
     OneTwentieth(5.0),
   }
@@ -380,6 +382,8 @@ sealed interface Fraction {
     OneFifth(20.0),
     OneSixth(16.66667),
     OneSeventh(14.28571),
+    OneEighth(12.5),
+    OneNinth(11.11111),
     OneTenth(10.0),
     OneTwentieth(5.0);
 

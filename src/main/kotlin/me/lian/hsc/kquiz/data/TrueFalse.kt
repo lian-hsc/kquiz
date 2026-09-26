@@ -16,7 +16,7 @@ class TrueFalse private constructor(
   hidden: Boolean?,
   idNumber: String?,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("answer") val answers: List<MultipleChoice.Answer>,
-  @JsonProperty("showstandardinstructions") @JsonSerialize(using = NumericBooleanSerializer::class) val showStandardInstructions: Boolean,
+  @JsonProperty("showstandardinstruction") @JsonSerialize(using = NumericBooleanSerializer::class) val showStandardInstructions: Boolean,
   ) : Question(name, question, defaultGrade, tags, generalFeedback, hidden, idNumber) {
 
 
