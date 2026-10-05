@@ -14,6 +14,7 @@ import tools.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper
  * You can provide additional answers with a blank question to provide wrong answers that are never used.
  *
  * @property answers the answers to the question
+ * @property shuffle whether the answers are shuffled (if not set, Moodle's default: they are)
  * @property showStandardInstructions whether the standard instructions are shown (if not set, Moodle's default)
  * @property combinedFeedback the combined feedback for the question
  * @property multipleTries handling of multiple tries for the question
@@ -32,6 +33,7 @@ class Matching(
   hidden: Boolean?,
   idNumber: String?,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("subquestion") val answers: List<Answer>,
+  @JsonProperty("shuffleanswers") @JsonSerialize(using = NumericBooleanSerializer::class) val shuffle: Boolean?,
   @JsonProperty("showstandardinstruction") @JsonSerialize(using = NumericBooleanSerializer::class) val showStandardInstructions: Boolean?,
   @JsonUnwrapped val combinedFeedback: CombinedFeedback,
   @JsonUnwrapped val multipleTries: MultipleTries,

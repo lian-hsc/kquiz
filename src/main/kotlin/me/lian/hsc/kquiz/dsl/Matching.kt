@@ -12,6 +12,9 @@ class MatchingDsl : QuestionDsl<Matching>() {
 
   var defaultGrade: Double = 1.0
 
+  /** Whether the answers are shuffled; if not set, Moodle's default applies (they are). */
+  var shuffle: Boolean? = null
+
   /** Whether the standard instructions are shown; if not set, Moodle's default applies. */
   var showStandardInstructions: Boolean? = null
 
@@ -67,6 +70,7 @@ class MatchingDsl : QuestionDsl<Matching>() {
       hidden,
       idNumber,
       answers.toList(),
+      shuffle,
       showStandardInstructions,
       combinedFeedback.build(),
       multipleTries.build(),
