@@ -3,6 +3,8 @@ package me.lian.hsc.kquiz.data
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonTypeName
 import com.fasterxml.jackson.annotation.JsonUnwrapped
+import me.lian.hsc.kquiz.serialization.NumericBooleanSerializer
+import tools.jackson.databind.annotation.JsonSerialize
 import tools.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper
 
 /**
@@ -12,6 +14,7 @@ import tools.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper
  * You can provide additional answers with a blank question to provide wrong answers that are never used.
  *
  * @property answers the answers to the question
+ * @property showStandardInstructions whether the standard instructions are shown (if not set, Moodle's default)
  * @property combinedFeedback the combined feedback for the question
  * @property multipleTries handling of multiple tries for the question
  * @see Answer
@@ -29,6 +32,7 @@ class Matching(
   hidden: Boolean?,
   idNumber: String?,
   @JacksonXmlElementWrapper(useWrapping = false) @JsonProperty("subquestion") val answers: List<Answer>,
+  @JsonProperty("showstandardinstruction") @JsonSerialize(using = NumericBooleanSerializer::class) val showStandardInstructions: Boolean?,
   @JsonUnwrapped val combinedFeedback: CombinedFeedback,
   @JsonUnwrapped val multipleTries: MultipleTries,
 ) : Question(name, question, defaultGrade, tags, generalFeedback, hidden, idNumber) {

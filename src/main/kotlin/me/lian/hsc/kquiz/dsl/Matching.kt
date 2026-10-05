@@ -12,6 +12,9 @@ class MatchingDsl : QuestionDsl<Matching>() {
 
   var defaultGrade: Double = 1.0
 
+  /** Whether the standard instructions are shown; if not set, Moodle's default applies. */
+  var showStandardInstructions: Boolean? = null
+
   private var questionBlock: (HtmlBuilder.() -> Unit) by Required("question")
   private val answers = mutableListOf<Matching.Answer>()
   private val combinedFeedback = CombinedFeedbackDsl()
@@ -64,6 +67,7 @@ class MatchingDsl : QuestionDsl<Matching>() {
       hidden,
       idNumber,
       answers.toList(),
+      showStandardInstructions,
       combinedFeedback.build(),
       multipleTries.build(),
     )
