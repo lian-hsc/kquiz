@@ -37,6 +37,15 @@ open class HtmlBuilder {
     builder.append(content)
   }
 
+  /**
+   * Adds an HTML comment, e.g. credits: kept in the text, but not shown.
+   * @throws IllegalArgumentException if [text] contains `-->`, which would end the comment early
+   */
+  fun comment(text: String) {
+    require("-->" !in text) { "an HTML comment can't contain \"-->\"" }
+    builder.append("<!--").append(text).append("-->")
+  }
+
   fun br(vararg attributes: Pair<String, String>) {
     voidElement("br", *attributes)
   }
